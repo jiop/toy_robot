@@ -44,6 +44,7 @@ module ToyRobot
     #   An array of Strings representing the action's arguments
     #
     def do_action action, args = []
+      return if action.nil?
       ACTIONS[action.downcase.to_sym].call self, args
     end
 

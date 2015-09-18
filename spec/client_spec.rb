@@ -16,6 +16,12 @@ describe ToyRobot::Client do
       subject.read_console_input
       expect($stdin).to have_received(:gets).exactly(3).times
     end
+
+    it 'accepts empty lines' do
+      allow($stdin).to receive(:gets).and_return("\n", '')
+      expect { subject.read_console_input }.to output('').to_stdout
+      expect($stdin).to have_received(:gets).exactly(2).times
+    end
   end
 
   describe 'extended tests' do
