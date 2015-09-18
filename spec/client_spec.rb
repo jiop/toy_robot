@@ -22,6 +22,12 @@ describe ToyRobot::Client do
       expect { subject.read_console_input }.to output('').to_stdout
       expect($stdin).to have_received(:gets).exactly(2).times
     end
+
+    it 'does nothing on invalid command' do
+      allow($stdin).to receive(:gets).and_return('AZERTY', 'QWERTY', 'asd asgtr hrt hrthrt', '')
+      expect { subject.read_console_input }.to output('').to_stdout
+      expect($stdin).to have_received(:gets).exactly(4).times
+    end
   end
 
   describe 'extended tests' do

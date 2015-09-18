@@ -11,7 +11,7 @@ module ToyRobot
       right: ->(robot, args) { robot.right },
       report: ->(robot, args) { robot.report }
     }
-    ACTIONS.default = -> {}
+    ACTIONS.default = ->(_,_) {}
 
     # rapid hash lambda + error management for moves
     MOVES = {
