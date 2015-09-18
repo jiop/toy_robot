@@ -14,7 +14,7 @@ describe ToyRobot::Client do
     it 'accepts command from command line' do
       allow($stdin).to receive(:gets).and_return('PLACE 0,0,NORTH', 'REPORT', '')
       subject.read_console_input
-      expect(STDIN).to have_received(:gets).exactly(3).times
+      expect($stdin).to have_received(:gets).exactly(3).times
     end
   end
 
